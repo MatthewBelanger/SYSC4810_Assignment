@@ -1,0 +1,9 @@
+Role,Account Balance,Investment Portfolio,Financial Advisor Contact Details,Financial Planner Contact Details,Investment Analyst Contact Details,Clients Account Balance,Clients Investment Portfolio,Money Market Instruments ,Private Consumer Instruments,Interest Instruments,Derivatives Trading,General Clients Information,Validate Investment Portfolio Modifications
+Regular Client,R,R,R,,,,,,,,,,
+Premium Client,R,RW,R,R,,,,,,,,,
+Financial Advisor,,,,,,R,RW,,R,,,R,
+Financial Planner,,,,,,R,RW,R,R,,,R,
+Investment Analyst,,,,,,R,RW,R,R,R,R,R,
+Compliance Officer,,,,,,R,R,,,,,R,RW
+Technical Support,,,,,,,,,,,,R,
+Teller,,,,,,R,R,,,,,R,
