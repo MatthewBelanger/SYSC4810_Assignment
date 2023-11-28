@@ -35,11 +35,14 @@ class UI:
         print("LOGIN SUCCESSFUL\n")
         print("Account information:")
         print("Username: " + user.getUsername())
-        print("Role: " + role.getName())
-        print("Access Permissions: ")
+        print("Role: " + user.getRole())
+        print("\nAccess Permissions: ")
         perms = user.getPermissions()
         for perm in perms:
             print(perm + "=" + perms[perm])
+
+        if(user.getRole() == "Teller"):
+            print("You are a teller so you can only use the system between 9:00am and 5:00pm")
         
 
     def createAccountUI(self) -> None:
