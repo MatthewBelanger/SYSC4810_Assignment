@@ -1,11 +1,17 @@
 import hashlib
 import random
+import PasswordChecker
 
 class PasswordManager:
     def __init__(self) -> None:
-        self.__passwdFile = "./Problem2/passwd.txt"
+        self.__passwdFile = "./Problem3/passwd.txt"
+        self.__passwordChecker = PasswordChecker.PasswordChecker()
 
     def createAccount(self, username, passwd, role) -> bool:
+        if(not self.usernameIsUnique(username)):
+            return False
+        if(not self.__passwordChecker.checkPswd(username, passwd)):
+            return False
         file = open(self.__passwdFile, "a")
         salt = str(random.getrandbits(32))
         passwd = passwd + salt
@@ -14,9 +20,12 @@ class PasswordManager:
         file.close()
         return True
     
-    #This method is only for testing the retrival of information from passwd.txt
-    #IT WILL NOT APPEAR IN FINAL VERSION OF SYSTEM
-    def printFile(self) -> None:
+    def usernameIsUnique(self, username) -> bool:
         file = open(self.__passwdFile, "r")
         for line in file:
-            print(line)
+            splitLine = line.split(" ")
+            if(splitLine[0] == username):
+                return False
+        return True
+
+    

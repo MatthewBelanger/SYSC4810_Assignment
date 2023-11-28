@@ -3,13 +3,13 @@ import User
 
 def main():
     #Create roles
-    regularClientRole = Role.Role("Regular Client")
-    premiumClientRole = Role.Role("Premium Client")
-    financialAdvisorRole = Role.Role("Financial Advisor")
-    financialPlannerRole = Role.Role("Financial Planner")
-    investmentAnalystRole = Role.Role("Investment Analyst")
-    complianceOfficerRole = Role.Role("Compliance Officer")
-    technicalSupportRole = Role.Role("Technical Support")
+    regularClientRole = Role.Role("Regular_Client")
+    premiumClientRole = Role.Role("Premium_Client")
+    financialAdvisorRole = Role.Role("Financial_Advisor")
+    financialPlannerRole = Role.Role("Financial_Planner")
+    investmentAnalystRole = Role.Role("Investment_Analyst")
+    complianceOfficerRole = Role.Role("Compliance_Officer")
+    technicalSupportRole = Role.Role("Technical_Support")
     tellerRole = Role.Role("Teller")
 
     #Create users
