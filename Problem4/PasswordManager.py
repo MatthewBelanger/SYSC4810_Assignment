@@ -4,8 +4,28 @@ import PasswordChecker
 
 class PasswordManager:
     def __init__(self) -> None:
-        self.__passwdFile = "./Problem3/passwd.txt"
+        self.__passwdFile = "./Problem4/passwd.txt"
         self.__passwordChecker = PasswordChecker.PasswordChecker()
+
+    def login(self, username, passwd) -> bool:
+        file = open(self.__passwdFile, "r")
+        for account in file:
+            account = account.split(" ")
+            account[3] = account[3].replace("\n", "")
+            if(account[0] == username):
+                passwd = passwd + account[2]
+                passwdHash = hashlib.sha512(passwd.encode())
+                if (passwdHash.hexdigest() == account[3]):
+                    file.close()
+                    return (True, account[1])
+                else:
+                    print("Incorrect password")
+                    file.close()
+                    return (False, None)
+        file.close()
+        print("No account exists with that username")
+        return (False, None)
+                
 
     def createAccount(self, username, passwd, role) -> bool:
         if(not self.usernameIsUnique(username)):

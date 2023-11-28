@@ -1,13 +1,48 @@
 import getpass
 import PasswordManager
+import Role
+import User
 
 class UI:
     def __init__(self) -> None:
         self.__passwordManager = PasswordManager.PasswordManager()
         self.__validRoles = ["Regular_Client", "Premium_Client", "Financial_Advisor", "Financial_Planner", "Investment_Analyst", "Compliance_Officer", "Technical_Support", "Teller"]
+        self.__validActions = ['L', 'C']
+
+    def startUI(self) -> None:
+        print("\nWelcome to Finvest Holdings\n")
+        action = input("Please enter L to login or C to create an account: ")
+        if(action not in self.__validActions):
+            print("Invalid action")
+            self.startUI()
+        if(action == 'C'):
+            self.createAccountUI()
+        elif(action == 'L'):
+            self.loginUI()
+
+    def loginUI(self) -> None:
+        print("LOGIN")
+        print("---------------------------------------")
+        username = input("Enter username:")
+        password = (getpass.getpass("Enter password:"))
+        (success, roleName) = self.__passwordManager.login(username, password)
+        if(not success):
+            print("FAILED TO LOGIN")
+            self.loginUI()
+        
+        role = Role.Role(roleName)
+        user = User.User(username, role)
+        print("LOGIN SUCCESSFUL\n")
+        print("Account information:")
+        print("Username: " + user.getUsername())
+        print("Role: " + role.getName())
+        print("Access Permissions: ")
+        perms = user.getPermissions()
+        for perm in perms:
+            print(perm + "=" + perms[perm])
+        
 
     def createAccountUI(self) -> None:
-        print("\nFinvest Holdings")
         print("CREATE AN ACCOUNT")
         print("---------------------------------------")
 
@@ -45,5 +80,6 @@ class UI:
             print("- not have calendar date pattern")
             print("- not have phone number pattern")
             self.createAccountUI()
+
         print("ACCOUNT SUCCESSFULLY CREATED")
 
