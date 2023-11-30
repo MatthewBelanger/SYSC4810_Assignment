@@ -8,7 +8,7 @@ class Role:
         return self.__name
     
     def getPermissions(self) -> dict:
-        with open("RolePermissionsMatrix.csv", "r") as CSVFile:
+        with open("./Problem4/RolePermissionsMatrix.csv", "r") as CSVFile:
             CSVReader = csv.DictReader(CSVFile)
             dataDict = [row for row in CSVReader]
             for item in dataDict:
