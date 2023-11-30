@@ -1,9 +1,6 @@
-import os
 import PasswordManager
 
 def main():
-    os.remove("./Problem2/passwd.txt")
-
     passwordManager = PasswordManager.PasswordManager()
 
     passwordManager.createAccount("mischa", "password123", "Regular_Client")

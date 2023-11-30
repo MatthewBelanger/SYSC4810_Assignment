@@ -3,7 +3,7 @@ import random
 
 class PasswordManager:
     def __init__(self) -> None:
-        self.__passwdFile = "./Problem2/passwd.txt"
+        self.__passwdFile = "passwd.txt"
 
     def createAccount(self, username, passwd, role) -> bool:
         file = open(self.__passwdFile, "a")

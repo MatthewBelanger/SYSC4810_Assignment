@@ -4,7 +4,7 @@ import PasswordChecker
 
 class PasswordManager:
     def __init__(self) -> None:
-        self.__passwdFile = "./Problem3/passwd.txt"
+        self.__passwdFile = "passwd.txt"
         self.__passwordChecker = PasswordChecker.PasswordChecker()
 
     def createAccount(self, username, passwd, role) -> bool:
