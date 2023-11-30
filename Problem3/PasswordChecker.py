@@ -11,7 +11,7 @@ class PasswordChecker:
                     "654321", "123321", "Qwertyuiop", "Iloveyou"]
         
     def checkPswd(self, username, passwd) -> bool:
-        if (len(passwd) < 8):
+        if (len(passwd) < 8 or len(passwd) > 1024):
             return False
         if passwd in self.__weakPswdLst:
             return False

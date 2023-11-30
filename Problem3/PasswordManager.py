@@ -1,10 +1,11 @@
 import hashlib
 import random
 import PasswordChecker
+import os
 
 class PasswordManager:
     def __init__(self) -> None:
-        self.__passwdFile = "passwd.txt"
+        self.__passwdFile = "./Problem3/passwd.txt"
         self.__passwordChecker = PasswordChecker.PasswordChecker()
 
     def createAccount(self, username, passwd, role) -> bool:
@@ -13,7 +14,8 @@ class PasswordManager:
         if(not self.__passwordChecker.checkPswd(username, passwd)):
             return False
         file = open(self.__passwdFile, "a")
-        salt = str(random.getrandbits(32))
+        #salt = str(random.getrandbits(32))
+        salt = str(os.urandom(32))
         passwd = passwd + salt
         passwdHash = hashlib.sha512(passwd.encode())
         file.write(username  + " " + role + " " + salt + " " + passwdHash.hexdigest() + "\n")
