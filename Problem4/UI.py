@@ -6,8 +6,9 @@ import User
 class UI:
     def __init__(self) -> None:
         self.__passwordManager = PasswordManager.PasswordManager()
+        self.__failedLoginAttempts = []
         self.__validRoles = ["Regular_Client", "Premium_Client", "Financial_Advisor", "Financial_Planner", "Investment_Analyst", "Compliance_Officer", "Technical_Support", "Teller"]
-        self.__validActions = ['L', 'C']
+        self.__validRoles = ['L', 'C']
 
     def startUI(self) -> None:
         print("\nWelcome to Finvest Holdings\n")
@@ -28,8 +29,12 @@ class UI:
         (success, roleName) = self.__passwordManager.login(username, password)
         if(not success):
             print("FAILED TO LOGIN")
+            self.__failedLoginAttempts += username
+            if(self.__failedLoginAttempts.count(username) == 10):
+                print("THIS IS YOUR 10TH FAILED LOGIN ATTEMPT IN A ROW")
+                print("YOU HAVE BEEN LOCKEDOUT")
+                exit()
             self.loginUI()
-        
         role = Role.Role(roleName)
         user = User.User(username, role)
         print("LOGIN SUCCESSFUL\n")
@@ -50,7 +55,8 @@ class UI:
         print("---------------------------------------")
 
         print("ROLE OPTIONS\n")
-        print("Regular_Client\nPremium_Client\nFinancial_Advisor\nFinancial_Planner\nInvestment_Analyst\nCompliance_Officer\nTechnical_Support\nTeller\n")
+        for role in self.__validRoles:
+            print(role)
         role = input("Enter Role:")
         if(role not in self.__validRoles):
             print("Invalid role entered")
@@ -61,7 +67,7 @@ class UI:
         print("Please ensure the following")
         print("Username is unique")
         print("Password must include:")
-        print("- atleast 8 characters in length")
+        print("- Between 8 to 1024 characters in length")
         print("- one upper case letter")
         print("- one lower case letter")
         print("- one number")
@@ -75,7 +81,7 @@ class UI:
             print("Please ensure the following")
             print("Username is unique")
             print("Password must include:")
-            print("- atleast 8 characters in length")
+            print("- Between 8 to 1024 characters in length")
             print("- one upper case letter")
             print("- one lower case letter")
             print("- one number")

@@ -12,7 +12,8 @@ class UI:
         print("---------------------------------------")
 
         print("ROLE OPTIONS\n")
-        print("Regular_Client\nPremium_Client\nFinancial_Advisor\nFinancial_Planner\nInvestment_Analyst\nCompliance_Officer\nTechnical_Support\nTeller\n")
+        for role in self.__validRoles:
+            print(role)
         role = input("Enter Role:")
         if(role not in self.__validRoles):
             print("Invalid role entered")
@@ -23,7 +24,7 @@ class UI:
         print("Please ensure the following")
         print("Username is unique")
         print("Password must include:")
-        print("- atleast 8 characters in length")
+        print("- Between 8 to 1024 characters in length")
         print("- one upper case letter")
         print("- one lower case letter")
         print("- one number")
@@ -37,7 +38,7 @@ class UI:
             print("Please ensure the following")
             print("Username is unique")
             print("Password must include:")
-            print("- atleast 8 characters in length")
+            print("- Between 8 to 1024 characters in length")
             print("- one upper case letter")
             print("- one lower case letter")
             print("- one number")

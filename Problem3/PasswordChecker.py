@@ -21,9 +21,11 @@ class PasswordChecker:
             return False
         return self.containsRequiredCharacters(passwd)
         
-    #Any password containing 8 or 9 numbers will not be allowed
+    #Any password containing exactly 8 or 9 numbers will not be allowed
     #in fear they are a phone number or a date
     def isCalenderDateOrPhoneNumber(self, passwd) -> bool:
+        if (len(passwd) > 9):
+            return False
         numberCount = 0
         for elem in passwd:
             if (elem.isnumeric()):
