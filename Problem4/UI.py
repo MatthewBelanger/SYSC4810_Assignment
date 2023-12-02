@@ -29,7 +29,7 @@ class UI:
         (success, roleName) = self.__passwordManager.login(username, password)
         if(not success):
             print("FAILED TO LOGIN")
-            self.__failedLoginAttempts += username
+            self.__failedLoginAttempts.append(username)
             if(self.__failedLoginAttempts.count(username) == 10):
                 print("THIS IS YOUR 10TH FAILED LOGIN ATTEMPT IN A ROW")
                 print("YOU HAVE BEEN LOCKEDOUT")
