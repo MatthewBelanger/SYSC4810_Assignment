@@ -8,7 +8,7 @@ class UI:
         self.__passwordManager = PasswordManager.PasswordManager()
         self.__failedLoginAttempts = []
         self.__validRoles = ["Regular_Client", "Premium_Client", "Financial_Advisor", "Financial_Planner", "Investment_Analyst", "Compliance_Officer", "Technical_Support", "Teller"]
-        self.__validRoles = ['L', 'C']
+        self.__validActions = ['L', 'C']
 
     def startUI(self) -> None:
         print("\nWelcome to Finvest Holdings\n")
