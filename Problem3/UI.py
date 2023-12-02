@@ -47,4 +47,5 @@ class UI:
             print("- not have phone number pattern")
             self.createAccountUI()
         print("ACCOUNT SUCCESSFULLY CREATED")
+        exit()
 

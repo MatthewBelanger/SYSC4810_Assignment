@@ -48,6 +48,7 @@ class UI:
 
         if(user.getRole() == "Teller"):
             print("You are a teller so you can only use the system between 9:00am and 5:00pm")
+        exit()
         
 
     def createAccountUI(self) -> None:
@@ -91,4 +92,5 @@ class UI:
             self.createAccountUI()
 
         print("ACCOUNT SUCCESSFULLY CREATED")
+        exit()
 
